@@ -1,0 +1,14 @@
+.env
+output/
+__pycache__/
+*.pyc
+.env.txt
+bridge/
+files/
+/agents.yaml
+/tasks.yaml
+.env.txt
+bridge/
+files/
+/agents.yaml
+/tasks.yaml

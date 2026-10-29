@@ -1,0 +1,42 @@
+# TASKS = WHAT work must be done. They run in the order written here.
+# {topic} and {today} are filled in automatically.
+#
+# agent:       which agent (from agents.yaml) does this task
+# context:     earlier tasks whose results this task can read
+# output_file: file name saved inside this run's output folder
+
+research_task:
+  agent: researcher
+  description: >
+    Today's date is {today}. Research the topic '{topic}'. Use the
+    web_search tool 3 to 5 times (short queries work best) to find current
+    facts. Cover what it is, key points, examples, and limitations. For each
+    finding include the source URL.
+  expected_output: >
+    A bullet-point list of 10-15 key findings, each with its source URL.
+
+writing_task:
+  agent: writer
+  context: [research_task]
+  description: >
+    Using the research findings, write a beginner-friendly report with an
+    introduction, main sections, and a short conclusion. End with a
+    'Sources' section that lists the URLs from the research notes.
+  expected_output: A well-formatted Markdown report with a Sources section.
+  output_file: draft.md
+
+editing_task:
+  agent: editor
+  context: [research_task, writing_task]
+  description: >
+    Review the draft report against the research notes.
+    1) Remove or soften any claim not supported by the notes.
+    2) Fix unclear, repeated or wrong statements.
+    3) Keep only sources that appear in the research notes.
+    4) Keep the Markdown format.
+    5) End with a short section titled 'Editor Notes' listing what you
+    changed.
+  expected_output: >
+    The final corrected Markdown report with Sources and Editor Notes
+    sections.
+  output_file: report.md

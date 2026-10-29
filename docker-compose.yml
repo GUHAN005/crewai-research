@@ -1,0 +1,8 @@
+services:
+  crew:
+    build: .
+    env_file: .env
+    ports:
+      - "8501:8501"            # open http://localhost:8501 in your browser
+    volumes:
+      - ./output:/app/output   # reports are also saved in your local ./output folder
